@@ -6,3 +6,10 @@
 --
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_nam("lazyvim_wrap_spell")
+vim.api.nvim_create_autocmd("TermEnter", {
+  group = vim.api.nvim_create_augroup("term_auto_insert", { clear = true }),
+  pattern = "*",
+  callback = function()
+    vim.cmd("startinsert")
+  end,
+})
